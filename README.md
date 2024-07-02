@@ -7,7 +7,7 @@ The Expense Tracker allows users to manage their transactions, providing insight
 ## Features
 
 - Provides a real-time calculation of the total balance based on recorded transactions.
-- Separate categorization and detailed computation of total income and expenses.
+- Separate categorization and computation of total income and expenses.
 - Interactive list displaying all transactions, equipped with options to delete specific transactions.
 - Utilizes localStorage to persist transaction data locally within the user's browser.
 
