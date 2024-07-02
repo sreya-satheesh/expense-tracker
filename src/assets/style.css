@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app
+{
+  width: 35em;
+}
+
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.container {
+  border: 1px solid #d8d8d8;
+}
+
+#addbtn
+{
+  height: 3em;
+}
+
+#delbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 1em; 
+  height: 1em; 
+  padding: 0; 
+  border: none; 
+  background-color: transparent; 
+  color: #dc3545;
+  font-size: 1em;
+  font-weight: 700;
+      margin-left: 0.2em;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+#list-exp
+{
+  display:flex;
+}
