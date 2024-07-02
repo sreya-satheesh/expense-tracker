@@ -1,4 +1,4 @@
-# Vue.js Expense Tracker
+# Expense Tracker built with Vue.js
 
 ![recording (1)](https://github.com/sreya-satheesh/expense-tracker/assets/168891722/441e5e9d-c82a-435b-9c08-8982c5d2e2da)
 
