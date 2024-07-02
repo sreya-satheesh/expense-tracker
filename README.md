@@ -11,5 +11,6 @@ The Expense Tracker is a web application built with Vue.js that helps users trac
 - Delete existing transactions.
 
 ## Installation
+
 - Run npm install to install dependencies
 - Run npm run dev to launch the local server
