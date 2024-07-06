@@ -4,14 +4,14 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <p class="card-title">Total Income : <span class="text-success">{{ formatAmount(income) }}</span></p>
+        <p class="card-title">Income : <span class="text-success">{{ formatAmount(income) }}</span></p>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <p class="card-title">Total Expense : <span class="text-danger">{{ formatAmount(expenses) }}</span></p>
+        <p class="card-title">Expense : <span class="text-danger">{{ formatAmount(expenses) }}</span></p>
       </div>
     </div>
   </div>

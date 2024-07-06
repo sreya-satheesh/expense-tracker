@@ -29,10 +29,8 @@
   </div>
 </template>
 
-
-
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
   transactions: {
@@ -48,11 +46,14 @@ const deleteTransaction = (id) => {
 };
 
 const formatAmount = (amount) => {
-  // Format amount to display correctly with sign and format
-  return amount.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  });
+  if (amount > 0) {
+    return `+ $${amount.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+    })}`;
+  } else if (amount < 0) {
+    return `- $${Math.abs(amount).toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+    })}`;
+  }
 };
 </script>

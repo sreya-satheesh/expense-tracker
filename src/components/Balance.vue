@@ -14,23 +14,18 @@ const props = defineProps({
   },
 });
 
-const formatBalance = (balance) => 
-{
-  if (balance > 0) 
-  {
+const formatBalance = (balance) => {
+  if (balance > 0) {
     return `+ $${balance.toLocaleString('en-US', {
       minimumFractionDigits: 2,
     })}`;
-  }
-  else if (balance < 0) 
-  {
-    return `- $${balance.toLocaleString('en-US', {
+  } else if (balance < 0) {
+    // Adjusting the formatting for negative balances
+    return `- $${Math.abs(balance).toLocaleString('en-US', {
       minimumFractionDigits: 2,
     })}`;
-  }
-  else 
-  {
-    return `$${Math.abs(balance).toLocaleString('en-US', {
+  } else {
+    return `$${balance.toLocaleString('en-US', {
       minimumFractionDigits: 2,
     })}`;
   }
