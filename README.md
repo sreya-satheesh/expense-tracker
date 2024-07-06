@@ -1,6 +1,6 @@
 # Expense Tracker built with Vue.js & Composition API
 
-![recording (1)](https://github.com/sreya-satheesh/expense-tracker/assets/168891722/441e5e9d-c82a-435b-9c08-8982c5d2e2da)
+![screen-capture](https://github.com/sreya-satheesh/expense-tracker/assets/168891722/27ff8649-29fd-4583-9b86-b5d19de4de77)
 
 The Expense Tracker allows users to manage their transactions, providing insights into their balance, income, and expenses. It includes features for adding new transactions, viewing a list of transactions, and deleting transactions. The application persists data locally using localStorage.
 
