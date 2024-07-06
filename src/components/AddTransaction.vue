@@ -1,20 +1,19 @@
 <template>
-  <h4>Add new transaction</h4>
-  <form id="form" @submit.prevent="onSubmit">
-
-      <input class="form-control my-3" type="text" id="text" placeholder="Enter text" v-model="text" />
-
-      <input
-         class="form-control" 
-         type="text"
-        id="amount"
-        placeholder="Enter amount : (negative - expense, positive - income)"
-        v-model="amount"
-      />
-
-    <button id="addbtn" class="btn btn-success w-100 mt-3">Add</button>
+  <form id="form" @submit.prevent="onSubmit" class="d-flex">
+    <input class="form-control me-2" type="text" id="text" placeholder="Enter expense" v-model="text" />
+    
+    <input
+      class="form-control me-2"
+      type="number"
+      id="amount"
+      placeholder="Enter amount"
+      v-model.number="amount"
+    />
+    
+    <button id="addbtn" class="btn btn-success">+</button>
   </form>
 </template>
+
 
 <script setup>
 import { useToast } from 'vue-toastification';

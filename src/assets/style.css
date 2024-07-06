@@ -29,11 +29,6 @@ body {
   border: 1px solid #d8d8d8;
 }
 
-#addbtn
-{
-  height: 3em;
-}
-
 #delbtn {
   display: flex;
   justify-content: center;
@@ -46,7 +41,7 @@ body {
   color: #dc3545;
   font-size: 1em;
   font-weight: 700;
-      margin-left: 0.2em;
+  margin-left: 0.5em;
 }
 
 .list li:hover .delete-btn {
@@ -56,4 +51,9 @@ body {
 #list-exp
 {
   display:flex;
+}
+
+table
+{
+  border: 1px solid #c5c5c5;
 }

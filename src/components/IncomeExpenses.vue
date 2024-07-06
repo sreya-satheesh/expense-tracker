@@ -1,19 +1,17 @@
 <template>
 
-  <div class="row my-3">
+  <div class="row mt-5">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Income</h5>
-        <p class="card-text text-success">+${{ income }}</p>
+        <p class="card-title">Total Income : <span class="text-success">{{ formatAmount(income) }}</span></p>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Expense</h5>
-        <p class="card-text text-danger">{{ formatAmount(expenses) }}</p>
+        <p class="card-title">Total Expense : <span class="text-danger">{{ formatAmount(expenses) }}</span></p>
       </div>
     </div>
   </div>
@@ -35,14 +33,26 @@ const props = defineProps({
   },
 });
 
-const formatAmount = (amount) => {
-  if (amount < 0) {
+const formatAmount = (amount) => 
+{
+  if (amount < 0) 
+  {
     return `- $${Math.abs(amount).toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,
     }).slice(1)}`; 
-  } else {
+  }
+  else if(amount > 0)
+  {
+    return `+ $${Math.abs(amount).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+      }).slice(1)}`; 
+  } 
+  else 
+  {
     return `$${amount.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',

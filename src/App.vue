@@ -2,23 +2,29 @@
   <div>
     <Header />
     <div class="container p-5">
-      <Balance :total="total" />
-      <IncomeExpenses :income="income" :expenses="expenses" />
+      <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
+     
+      
       <TransactionList
         :transactions="transactions"
         @transactionDeleted="handleTransactionDeleted"
       />
-      <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
+
+      <IncomeExpenses :income="income" :expenses="expenses" />
+
+      
+      <Balance :total="total" />
+      
     </div>
   </div>
 </template>
 
 <script setup>
 import Header from './components/Header.vue';
+import AddTransaction from './components/AddTransaction.vue';
 import Balance from './components/Balance.vue';
 import IncomeExpenses from './components/IncomeExpenses.vue';
 import TransactionList from './components/TransactionList.vue';
-import AddTransaction from './components/AddTransaction.vue';
 
 import { ref, computed, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';

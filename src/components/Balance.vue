@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h4 class="text-center">Your Balance</h4>
-    <h1 class="text-center" id="balance">{{ formatBalance(total) }}</h1>
+  <div class="mt-3">
+    <p class="text-left"><strong>Balance :</strong> <span id="balance">{{ formatBalance(total) }}</span></p>
   </div>
 </template>
 
@@ -15,13 +14,23 @@ const props = defineProps({
   },
 });
 
-const formatBalance = (balance) => {
-  if (balance > 0) {
+const formatBalance = (balance) => 
+{
+  if (balance > 0) 
+  {
     return `+ $${balance.toLocaleString('en-US', {
       minimumFractionDigits: 2,
     })}`;
-  } else {
-    return `- $${Math.abs(balance).toLocaleString('en-US', {
+  }
+  else if (balance < 0) 
+  {
+    return `- $${balance.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+    })}`;
+  }
+  else 
+  {
+    return `$${Math.abs(balance).toLocaleString('en-US', {
       minimumFractionDigits: 2,
     })}`;
   }
