@@ -3,6 +3,16 @@
     <table v-if="transactions.length > 0" id="transactions-table" class="table mt-5">
       <thead>
         <tr>
+          <th colspan="2">
+            <label for="filterType">Filter by Type:</label>
+            <select id="filterType" v-model="filterType">
+              <option value="">All</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </th>
+        </tr>
+        <tr>
           <th>Sr.no</th>
           <th>Expense</th>
           <th>Amount</th>
@@ -12,7 +22,7 @@
       <tbody>
         <tr 
           v-for="(transaction, index) in transactions"
-          :key="transaction.id"
+ :key="transaction.id"
           :class="transaction.amount < 0 ? 'minus' : 'plus'"
         >
           <td>{{ index + 1 }}</td>
@@ -30,7 +40,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, ref, computed } from 'vue';
 
 const props = defineProps({
   transactions: {
@@ -39,6 +49,21 @@ const props = defineProps({
   },
 });
 
+const filterType = ref('');
+
+const filteredTransactions = computed(() => {
+  if (filterType.value === '') {
+    return props.transactions;
+  } else {
+    return props.transactions.filter(transaction => {
+      if (filterType.value === 'income') {
+        return transaction.amount > 0;
+      } else if (filterType.value === 'expense') {
+        return transaction.amount < 0;
+      }
+    });
+  }
+});
 const emit = defineEmits(['transactionDeleted']);
 
 const deleteTransaction = (id) => {
