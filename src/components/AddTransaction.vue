@@ -4,6 +4,13 @@
     
     <input
       class="form-control me-2"
+      type="text"
+      id="category"
+      placeholder="Enter category"
+      v-model="category"
+ />
+ <input
+      class="form-control me-2"
       type="number"
       id="amount"
       placeholder="Enter amount"
@@ -21,12 +28,13 @@ import { ref } from 'vue';
 
 const text = ref('');
 const amount = ref(null)
+const category = ref('');
 
 
 const toast = useToast();
 
 const emit = defineEmits(['transactionSubmitted']);
-
+ 
 const onSubmit = () => {
   if (!text.value || amount.value === null) {
     toast.error('Both fields must be filled.');
@@ -41,6 +49,7 @@ const onSubmit = () => {
   }
 
   const transactionData = {
+ category: category.value,
     text: text.value,
     amount: parsedAmount,
   };
@@ -48,6 +57,7 @@ const onSubmit = () => {
   emit('transactionSubmitted', transactionData);
 
   text.value = '';
+ category.value = '';
   amount.value = null;
 };
 

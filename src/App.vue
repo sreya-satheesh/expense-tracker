@@ -12,8 +12,14 @@
 
       <IncomeExpenses :income="income" :expenses="expenses" />
 
-      
-      <Balance :total="total" />
+       <Balance :total="total" />
+
+      <button class="btn btn-secondary mt-3" @click="toggleReport">
+        {{ showReport ? 'Hide Report' : 'Create Report' }}
+      </button>
+
+      <CategoryReport v-if="showReport" :transactions="transactions" />
+     
       
     </div>
   </div>
@@ -25,6 +31,7 @@ import AddTransaction from './components/AddTransaction.vue';
 import Balance from './components/Balance.vue';
 import IncomeExpenses from './components/IncomeExpenses.vue';
 import TransactionList from './components/TransactionList.vue';
+import CategoryReport from './components/CategoryReport.vue';
 
 import { ref, computed, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
@@ -32,7 +39,7 @@ import { useToast } from 'vue-toastification';
 const toast = useToast();
 
 // Define reactive variables
-const transactions = ref([]);
+const transactions = ref([]); 
 
 // Fetch transactions from localStorage on component mount
 onMounted(() => {
@@ -70,12 +77,17 @@ const handleTransactionSubmitted = (transactionData) => {
     id: generateUniqueId(),
     text: transactionData.text,
     amount: transactionData.amount,
+    category: transactionData.category,
   });
 
   saveTransactionsToLocalStorage();
 
   toast.success('Transaction added.');
 };
+
+// Define reactive variable for report visibility
+const showReport = ref(false);
+
 
 // Generate unique ID for transactions
 const generateUniqueId = () => {
@@ -94,5 +106,10 @@ const handleTransactionDeleted = (id) => {
 // Save transactions to localStorage
 const saveTransactionsToLocalStorage = () => {
   localStorage.setItem('transactions', JSON.stringify(transactions.value));
+};
+
+// Toggle report visibility
+const toggleReport = () => {
+  showReport.value = !showReport.value;
 };
 </script>

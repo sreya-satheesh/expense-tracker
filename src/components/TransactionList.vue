@@ -3,18 +3,9 @@
     <table v-if="transactions.length > 0" id="transactions-table" class="table mt-5">
       <thead>
         <tr>
-          <th colspan="2">
-            <label for="filterType">Filter by Type:</label>
-            <select id="filterType" v-model="filterType">
-              <option value="">All</option>
-              <option value="income">Income</option>
-              <option value="expense">Expense</option>
-            </select>
-          </th>
-        </tr>
-        <tr>
           <th>Sr.no</th>
           <th>Expense</th>
+          <th>Category</th>
           <th>Amount</th>
           <th>Action</th>
         </tr>
@@ -26,7 +17,9 @@
           :class="transaction.amount < 0 ? 'minus' : 'plus'"
         >
           <td>{{ index + 1 }}</td>
+       
           <td>{{ transaction.text }}</td>
+             <td>{{ transaction.category }}</td>
           <td>{{ formatAmount(transaction.amount) }}</td>
           <td>
             <button id="delbtn" class="btn btn-danger" @click="deleteTransaction(transaction.id)">
@@ -40,29 +33,13 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, computed } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
   transactions: {
     type: Array,
     required: true,
   },
-});
-
-const filterType = ref('');
-
-const filteredTransactions = computed(() => {
-  if (filterType.value === '') {
-    return props.transactions;
-  } else {
-    return props.transactions.filter(transaction => {
-      if (filterType.value === 'income') {
-        return transaction.amount > 0;
-      } else if (filterType.value === 'expense') {
-        return transaction.amount < 0;
-      }
-    });
-  }
 });
 const emit = defineEmits(['transactionDeleted']);
 
